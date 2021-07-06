@@ -30,6 +30,19 @@
     
     [Parse initializeWithConfiguration:config];
     
+    // Test writing to Parse database
+    PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
+    gameScore[@"score"] = @69420;
+    gameScore[@"playerName"] = @"Matthew Ponce de Leon";
+    gameScore[@"cheatMode"] = @YES;
+    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+     if (succeeded) {
+            NSLog(@"Object saved!");
+     } else {
+            NSLog(@"Error: %@", error.description);
+     }
+    }];
+    
     return YES;
 }
 
