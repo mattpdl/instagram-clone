@@ -19,62 +19,75 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
 
+- (IBAction)didTapLogin:(id)sender {
+    [self loginUser];
+}
+
+- (IBAction)didTapSignUp:(id)sender {
+    [self registerUser];
 }
 
 - (void)loginUser {
     // Get entered user credentials
-    NSString *username = self.usernameField.text;
-    NSString *password = self.passwordField.text;
-    
-    // Call login function with given credentials
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
-            [self displayAlert:@"Login Error" withMessage:@"Please check your user credentials and internet connection and try again."];
-        } else {
-            NSLog(@"User logged in successfully");
-            
-            // Display home feed after successful login
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-        }
-    }];
+    PFUser *userToLogin = [PFUser user];
+    if ([self setUserCredentials:userToLogin]) {
+        
+        // Call login function with given credentials
+        [PFUser logInWithUsernameInBackground:userToLogin.username password:userToLogin.password block:^(PFUser * user, NSError *  error) {
+            if (error != nil) {
+                NSLog(@"User log in failed: %@", error.localizedDescription);
+                [self displayAlert:@"Login Failure" withMessage:@"Please check your user credentials and internet connection and try again."];
+            } else {
+                NSLog(@"User logged in successfully");
+                
+                // Display home feed after successful login
+                self.user = user;
+                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            }
+        }];
+    }
 }
 
 - (void)registerUser {
-    // Initialize a user object
+    // Set new user credentials
     PFUser *newUser = [PFUser user];
-    [self setUserCredentials:newUser];
+    if ([self setUserCredentials:newUser]) {
     
-    // Call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            [self displayAlert:@"User Registration Error"
-                withMessage:@"Your user credentials could not be registered. This likely means your selected username is taken, or you do not have an internet connnection."];
-        } else {
-            NSLog(@"User registered successfully");
-            
-            // Manually segue to logged in view
-            self.user = newUser;
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-        }
-    }];
+        // Call sign up function on the object
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+                [self displayAlert:@"User Registration Failure"
+                    withMessage:@"This likely means your selected username is taken, or you are not connected to the internet."];
+            } else {
+                NSLog(@"User registered successfully");
+                
+                // Manually segue to logged in view
+                self.user = newUser;
+                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            }
+        }];
+    }
 }
 
-- (void)setUserCredentials:(PFUser *)newUser {
+- (BOOL)setUserCredentials:(PFUser *)user {
+    // Empty credentials given
     if ([self.usernameField.text isEqualToString:@""]) {
         [self displayAlert:@"Empty Username" withMessage:@"Your username cannot be empty."];
-        return;
+        return NO;
     } else if ([self.passwordField.text isEqualToString:@""]) {
         [self displayAlert:@"Empty Password" withMessage:@"Your password cannot be empty."];
-        return;
+        return NO;
     }
     
-    // Set user properties
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
+    else {
+        // Set user properties
+        user.username = self.usernameField.text;
+        user.password = self.passwordField.text;
+        return YES;
+    }
 }
 
 - (void)displayAlert:(NSString *)title withMessage:(NSString *)msg {
@@ -88,7 +101,7 @@
     [alert addAction:dismissAction];
     
     // Display alert
-    [self presentViewController:alert animated:YES completion:^{}];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
