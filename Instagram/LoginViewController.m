@@ -6,9 +6,12 @@
 //
 
 #import "LoginViewController.h"
+#import "FeedViewController.h"
 #import "Parse/Parse.h"
 
 @interface LoginViewController ()
+
+@property (nonatomic, strong) PFUser *user;
 
 @end
 
@@ -33,7 +36,8 @@
         } else {
             NSLog(@"User logged in successfully");
             
-            // display view controller that needs to shown after successful login
+            // Display home feed after successful login
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
 }
@@ -52,7 +56,9 @@
         } else {
             NSLog(@"User registered successfully");
             
-            // manually segue to logged in view
+            // Manually segue to logged in view
+            self.user = newUser;
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
 }
@@ -85,14 +91,15 @@
     [self presentViewController:alert animated:YES completion:^{}];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Pass the logged in user to the home feed view controller
+    FeedViewController *feed = [segue destinationViewController];
+    feed.user = self.user;
 }
-*/
+
 
 @end

@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +62,7 @@
                     <connections>
                         <outlet property="passwordField" destination="vJF-Iw-lzS" id="WQX-Fb-y8w"/>
                         <outlet property="usernameField" destination="SPR-Pp-pBd" id="zgO-Et-vJJ"/>
+                        <segue destination="qcT-Kk-A2B" kind="presentation" identifier="loginSegue" id="MJ8-E2-oto"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -74,7 +74,7 @@
             <objects>
                 <navigationController id="qcT-Kk-A2B" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ssd-uE-zsf">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -83,37 +83,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ZK-ur-REK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="785"/>
+            <point key="canvasLocation" x="775" y="100"/>
         </scene>
         <!--Home Feed-->
         <scene sceneID="wyg-QG-TNk">
             <objects>
-                <viewController id="ItM-eV-jSL" sceneMemberID="viewController">
+                <viewController id="ItM-eV-jSL" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hbL-vC-VhY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Fa7-AV-JVd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home Feed" id="2gp-aO-Ggp">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="ufI-jL-Vb7">
-                            <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="didTapLogout:" destination="ItM-eV-jSL" id="30A-8w-XJF"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New Post" image="insta_camera_btn" id="Dp1-Xn-Bi8">
-                            <color key="tintColor" name="AccentColor"/>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New Post" image="insta_camera_btn" id="Dp1-Xn-Bi8"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vku-Ps-kDn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="785"/>
+            <point key="canvasLocation" x="1501" y="100"/>
         </scene>
     </scenes>
     <resources>
         <image name="insta_camera_btn" width="25" height="25"/>
-        <namedColor name="AccentColor">
-            <color red="0.88235294117647056" green="0.18823529411764706" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

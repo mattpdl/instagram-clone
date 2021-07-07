@@ -23,6 +23,7 @@
 		FD2999192694E84D0037EF12 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FD2999182694E84D0037EF12 /* README.md */; };
 		FD29991B269509120037EF12 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD29991A269509120037EF12 /* Keys.plist */; };
 		FD2999222695164F0037EF12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2999212695164F0037EF12 /* LoginViewController.m */; };
+		FD29992526953CE90037EF12 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD29992426953CE90037EF12 /* FeedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		FD29991A269509120037EF12 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		FD2999202695164F0037EF12 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Instagram/LoginViewController.h; sourceTree = SOURCE_ROOT; };
 		FD2999212695164F0037EF12 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Instagram/LoginViewController.m; sourceTree = SOURCE_ROOT; };
+		FD29992326953CE90037EF12 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Instagram/FeedViewController.h; sourceTree = SOURCE_ROOT; };
+		FD29992426953CE90037EF12 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Instagram/FeedViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,8 @@
 		FD29991C269511F10037EF12 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FD29992326953CE90037EF12 /* FeedViewController.h */,
+				FD29992426953CE90037EF12 /* FeedViewController.m */,
 				FD2999202695164F0037EF12 /* LoginViewController.h */,
 				FD2999212695164F0037EF12 /* LoginViewController.m */,
 			);
@@ -439,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2999222695164F0037EF12 /* LoginViewController.m in Sources */,
+				FD29992526953CE90037EF12 /* FeedViewController.m in Sources */,
 				FD2998E12694E7C10037EF12 /* AppDelegate.m in Sources */,
 				FD2998F22694E7C20037EF12 /* main.m in Sources */,
 				FD2998E42694E7C10037EF12 /* SceneDelegate.m in Sources */,
