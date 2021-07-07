@@ -3,28 +3,117 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPR-Pp-pBd">
+                                <rect key="frame" x="50" y="377" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTm-jX-xvL">
+                                <rect key="frame" x="50" y="485" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie6-Ua-LZj">
+                                <rect key="frame" x="312" y="485" width="52" height="30"/>
+                                <state key="normal" title="Sign up"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="insta_camera_btn" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-LL-PLV">
+                                <rect key="frame" x="182" y="252" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="a1J-f1-ilq"/>
+                                    <constraint firstAttribute="height" constant="50" id="z0G-fp-oOb"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vJF-Iw-lzS">
+                                <rect key="frame" x="50" y="431" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SPR-Pp-pBd" firstAttribute="top" secondItem="uQn-LL-PLV" secondAttribute="bottom" constant="75" id="CkI-MS-y5z"/>
+                            <constraint firstItem="SPR-Pp-pBd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="IKh-5I-fKp"/>
+                            <constraint firstItem="vTm-jX-xvL" firstAttribute="top" secondItem="vJF-Iw-lzS" secondAttribute="bottom" constant="20" id="Uje-4B-WY8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vJF-Iw-lzS" secondAttribute="trailing" constant="50" id="ghZ-Ia-pMO"/>
+                            <constraint firstItem="vJF-Iw-lzS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="jGi-Wg-BHq"/>
+                            <constraint firstItem="vJF-Iw-lzS" firstAttribute="top" secondItem="SPR-Pp-pBd" secondAttribute="bottom" constant="20" id="npa-vn-0p5"/>
+                            <constraint firstItem="Ie6-Ua-LZj" firstAttribute="firstBaseline" secondItem="vTm-jX-xvL" secondAttribute="firstBaseline" id="ptf-lt-9c1"/>
+                            <constraint firstItem="Ie6-Ua-LZj" firstAttribute="trailing" secondItem="vJF-Iw-lzS" secondAttribute="trailing" id="q9I-zy-VVD"/>
+                            <constraint firstItem="vTm-jX-xvL" firstAttribute="leading" secondItem="vJF-Iw-lzS" secondAttribute="leading" id="uMd-bo-sRt"/>
+                            <constraint firstItem="vJF-Iw-lzS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uq8-8p-Qr4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SPR-Pp-pBd" secondAttribute="trailing" constant="50" id="wDd-7b-hMu"/>
+                            <constraint firstItem="uQn-LL-PLV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zaq-EJ-Ffc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordField" destination="vJF-Iw-lzS" id="WQX-Fb-y8w"/>
+                        <outlet property="usernameField" destination="SPR-Pp-pBd" id="zgO-Et-vJJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="116"/>
+            <point key="canvasLocation" x="65" y="100"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Num-On-isJ">
+            <objects>
+                <navigationController id="qcT-Kk-A2B" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ssd-uE-zsf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ItM-eV-jSL" kind="relationship" relationship="rootViewController" id="ha3-73-dhB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ZK-ur-REK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="785"/>
+        </scene>
+        <!--Home Feed-->
+        <scene sceneID="wyg-QG-TNk">
+            <objects>
+                <viewController id="ItM-eV-jSL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hbL-vC-VhY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Fa7-AV-JVd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home Feed" id="2gp-aO-Ggp">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ufI-jL-Vb7">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New Post" image="insta_camera_btn" id="Dp1-Xn-Bi8">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vku-Ps-kDn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="785"/>
         </scene>
     </scenes>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <namedColor name="AccentColor">
+            <color red="0.88235294117647056" green="0.18823529411764706" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
