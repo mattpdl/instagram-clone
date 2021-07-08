@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *captionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 
+@property (strong, nonatomic) UIImage *userImage;
 @property (strong, nonatomic) Post *post;
 
 @end
@@ -39,21 +40,28 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+- (IBAction)didTapCancel:(id)sender {
+    // Dismiss modal compose view
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+- (IBAction)didTapShare:(id)sender {
     // Create new post in the backend
-    UIImage *userImage = editedImage ? editedImage : originalImage;
-    [Post postUserImage:userImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Post postUserImage:self.userImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Posted image with caption: %@", self.captionTextView.text);
         } else {
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    self.userImage = editedImage ? editedImage : originalImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

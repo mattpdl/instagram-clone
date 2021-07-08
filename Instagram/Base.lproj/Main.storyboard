@@ -177,8 +177,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1LN-sC-HOu">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="o4s-JO-TPV"/>
-                        <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up.on.square" catalog="system" id="ZUK-xJ-WGx"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="o4s-JO-TPV">
+                            <connections>
+                                <action selector="didTapCancel:" destination="oRQ-ei-OZf" id="Nlx-bY-uBD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up.on.square" catalog="system" id="ZUK-xJ-WGx">
+                            <connections>
+                                <action selector="didTapShare:" destination="oRQ-ei-OZf" id="E2x-lV-vNy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="85X-oI-UO4" id="VQV-96-VTC"/>
