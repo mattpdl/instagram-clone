@@ -6,6 +6,7 @@
 //
 
 #import "ComposeViewController.h"
+#import "AppDelegate.h"
 #import "Post.h"
 
 @interface ComposeViewController ()
@@ -37,8 +38,10 @@
     [Post postUserImage:self.userImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Posted image with caption: %@", self.captionTextView.text);
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"Error: %@", error.localizedDescription);
+            [self displayAlert:@"Post Submission Failed" withMessage:@"Please check your internet connection and try again later."];
         }
     }];
 }
@@ -83,8 +86,8 @@
     UIImage *userImage = editedImage ? editedImage : originalImage;
     
     // Resize selected image
-    CGFloat height = MAX(userImage.size.height, 2500);
-    CGFloat width = MAX(userImage.size.width, 2500);
+    CGFloat height = MIN(userImage.size.height, 2500);
+    CGFloat width = MIN(userImage.size.width, 2500);
     self.userImage = [self resizeImage:userImage withSize:CGSizeMake(width, height)];
     [Post getPFFileFromImage:userImage];
     
@@ -102,6 +105,20 @@
     } else {
         [self.placeholderLabel setHidden:NO];
     }
+}
+
+- (void)displayAlert:(NSString *)title withMessage:(NSString *)msg{
+    // Create a UIAlertController object
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                               message:msg
+                               preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // Create a dismiss action
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+    [alert addAction:dismissAction];
+    
+    // Display alert
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*
