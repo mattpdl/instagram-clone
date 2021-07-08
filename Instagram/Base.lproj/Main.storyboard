@@ -148,16 +148,15 @@
                                     <constraint firstAttribute="width" secondItem="7uv-si-4SR" secondAttribute="height" id="SQf-TC-vvI"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write a caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="85X-oI-UO4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="85X-oI-UO4">
                                 <rect key="frame" x="144" y="66" width="260" height="732"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Write a caption..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-7O-MeB">
-                                <rect key="frame" x="144" y="166" width="141" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a caption..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-7O-MeB">
+                                <rect key="frame" x="149" y="76" width="141" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,10 +165,12 @@
                         <viewLayoutGuide key="safeArea" id="1rp-e0-6Wd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1dZ-7O-MeB" firstAttribute="top" secondItem="1rp-e0-6Wd" secondAttribute="top" constant="20" id="2UR-Ny-j3V"/>
                             <constraint firstItem="85X-oI-UO4" firstAttribute="leading" secondItem="7uv-si-4SR" secondAttribute="trailing" constant="10" id="P6H-NW-NVf"/>
                             <constraint firstItem="1rp-e0-6Wd" firstAttribute="bottom" secondItem="85X-oI-UO4" secondAttribute="bottom" constant="10" id="Ruj-JG-tGR"/>
                             <constraint firstItem="7uv-si-4SR" firstAttribute="top" secondItem="1rp-e0-6Wd" secondAttribute="top" constant="10" id="W0C-wi-eML"/>
                             <constraint firstItem="1rp-e0-6Wd" firstAttribute="trailing" secondItem="85X-oI-UO4" secondAttribute="trailing" constant="10" id="gSe-Ke-UtH"/>
+                            <constraint firstItem="1dZ-7O-MeB" firstAttribute="leading" secondItem="7uv-si-4SR" secondAttribute="trailing" constant="15" id="kNl-Dj-pNL"/>
                             <constraint firstItem="7uv-si-4SR" firstAttribute="leading" secondItem="1rp-e0-6Wd" secondAttribute="leading" constant="10" id="tzo-ST-qFh"/>
                             <constraint firstItem="7uv-si-4SR" firstAttribute="width" secondItem="Ikm-Vw-vOi" secondAttribute="width" multiplier="0.3" id="vtH-hZ-wKq"/>
                             <constraint firstItem="85X-oI-UO4" firstAttribute="top" secondItem="7uv-si-4SR" secondAttribute="top" id="xku-pS-4fG"/>
@@ -179,6 +180,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="o4s-JO-TPV"/>
                         <barButtonItem key="rightBarButtonItem" title="Share" image="square.and.arrow.up.on.square" catalog="system" id="ZUK-xJ-WGx"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionTextView" destination="85X-oI-UO4" id="VQV-96-VTC"/>
+                        <outlet property="placeholderLabel" destination="1dZ-7O-MeB" id="DD2-v4-7Ti"/>
+                        <outlet property="postImageView" destination="7uv-si-4SR" id="9Y8-u3-N7M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNF-5x-tKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -6,8 +6,15 @@
 //
 
 #import "ComposeViewController.h"
+#import "Post.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
+
+@property (strong, nonatomic) Post *post;
 
 @end
 
@@ -38,10 +45,27 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
-    // Do something with the images (based on your use case)
+    // Create new post in the backend
+    UIImage *userImage = editedImage ? editedImage : originalImage;
+    [Post postUserImage:userImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Posted image with caption: %@", self.captionTextView.text);
+        } else {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    // Show placeholder text when no caption has been entered
+    if ([self.captionTextView hasText]) {
+        [self.placeholderLabel setHidden:NO];
+    } else {
+        [self.placeholderLabel setHidden:YES];
+    }
 }
 
 /*
