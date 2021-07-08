@@ -25,6 +25,7 @@
 		FD2999222695164F0037EF12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2999212695164F0037EF12 /* LoginViewController.m */; };
 		FD29992526953CE90037EF12 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD29992426953CE90037EF12 /* FeedViewController.m */; };
 		FD4979DB2696901B002EB9D9 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4979DA2696901B002EB9D9 /* ComposeViewController.m */; };
+		FD4979DF2696A2FA002EB9D9 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4979DE2696A2FA002EB9D9 /* Post.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		FD29992426953CE90037EF12 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Instagram/FeedViewController.m; sourceTree = SOURCE_ROOT; };
 		FD4979D92696901B002EB9D9 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ComposeViewController.h; path = Instagram/ComposeViewController.h; sourceTree = SOURCE_ROOT; };
 		FD4979DA2696901B002EB9D9 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ComposeViewController.m; path = Instagram/ComposeViewController.m; sourceTree = SOURCE_ROOT; };
+		FD4979DD2696A2FA002EB9D9 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		FD4979DE2696A2FA002EB9D9 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,7 @@
 				FD2998ED2694E7C20037EF12 /* LaunchScreen.storyboard */,
 				FD2998F02694E7C20037EF12 /* Info.plist */,
 				FD2998F12694E7C20037EF12 /* main.m */,
+				FD4979DC2696942F002EB9D9 /* Models */,
 				FD29991C269511F10037EF12 /* View Controllers */,
 			);
 			path = Instagram;
@@ -205,6 +209,15 @@
 				FD2999212695164F0037EF12 /* LoginViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FD4979DC2696942F002EB9D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD4979DD2696A2FA002EB9D9 /* Post.h */,
+				FD4979DE2696A2FA002EB9D9 /* Post.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +467,7 @@
 				FD4979DB2696901B002EB9D9 /* ComposeViewController.m in Sources */,
 				FD2998F22694E7C20037EF12 /* main.m in Sources */,
 				FD2998E42694E7C10037EF12 /* SceneDelegate.m in Sources */,
+				FD4979DF2696A2FA002EB9D9 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
