@@ -142,11 +142,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7uv-si-4SR">
-                                <rect key="frame" x="10" y="66" width="124" height="124"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.viewfinder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7uv-si-4SR">
+                                <rect key="frame" x="10" y="66.5" width="124" height="122.5"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7uv-si-4SR" secondAttribute="height" id="SQf-TC-vvI"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aj9-QA-ubm" appends="YES" id="VeA-tg-RL5"/>
+                                </connections>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="85X-oI-UO4">
                                 <rect key="frame" x="144" y="66" width="260" height="732"/>
@@ -156,7 +160,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a caption..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-7O-MeB">
-                                <rect key="frame" x="149" y="76" width="141" height="24"/>
+                                <rect key="frame" x="149" y="73" width="141" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -165,7 +169,7 @@
                         <viewLayoutGuide key="safeArea" id="1rp-e0-6Wd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1dZ-7O-MeB" firstAttribute="top" secondItem="1rp-e0-6Wd" secondAttribute="top" constant="20" id="2UR-Ny-j3V"/>
+                            <constraint firstItem="1dZ-7O-MeB" firstAttribute="top" secondItem="1rp-e0-6Wd" secondAttribute="top" constant="17" id="2UR-Ny-j3V"/>
                             <constraint firstItem="85X-oI-UO4" firstAttribute="leading" secondItem="7uv-si-4SR" secondAttribute="trailing" constant="10" id="P6H-NW-NVf"/>
                             <constraint firstItem="1rp-e0-6Wd" firstAttribute="bottom" secondItem="85X-oI-UO4" secondAttribute="bottom" constant="10" id="Ruj-JG-tGR"/>
                             <constraint firstItem="7uv-si-4SR" firstAttribute="top" secondItem="1rp-e0-6Wd" secondAttribute="top" constant="10" id="W0C-wi-eML"/>
@@ -195,12 +199,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNF-5x-tKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aj9-QA-ubm">
+                    <connections>
+                        <action selector="didTapAdd:" destination="oRQ-ei-OZf" id="RUI-ZJ-UKM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2940.579710144928" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>
         <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="plus.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
