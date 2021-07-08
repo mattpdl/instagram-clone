@@ -40,13 +40,14 @@
         return nil;
     }
     
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
     // get image data and check if that is not nil
     if (!imageData) {
         return nil;
     }
     
-    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+    NSLog(@"Image size: %lu bytes", imageData.length);
+    return [PFFileObject fileObjectWithName:@"image.jpeg" data:imageData];
 }
 
 @end

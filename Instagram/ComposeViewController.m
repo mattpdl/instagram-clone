@@ -83,22 +83,10 @@
     UIImage *userImage = editedImage ? editedImage : originalImage;
     
     // Resize selected image
-    CGFloat height = userImage.size.height;
-    CGFloat width = userImage.size.width;
-    
-    if (height > 4000 || width > 4000) {
-        CGFloat maxDimension = MAX(height, width);
-        CGFloat aspectRatio = height / width;
-        
-        if (maxDimension == height) {
-            width = width * aspectRatio;
-        } else {
-            height = height / aspectRatio;
-        }
-    }
-    
-    // TODO: resize and set self.userImage
-    self.userImage = userImage;
+    CGFloat height = MAX(userImage.size.height, 2500);
+    CGFloat width = MAX(userImage.size.width, 2500);
+    self.userImage = [self resizeImage:userImage withSize:CGSizeMake(width, height)];
+    [Post getPFFileFromImage:userImage];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:^{
