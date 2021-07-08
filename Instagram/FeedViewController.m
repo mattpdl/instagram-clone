@@ -8,6 +8,7 @@
 #import "FeedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "SceneDelegate.h"
 
 @interface FeedViewController ()
 
@@ -17,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.user = [PFUser currentUser];
+    NSLog(@"%@ logged in ", self.user.username);
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -26,13 +29,13 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"Logged out user");
+            NSLog(@"Logged out %@", self.user.username);
             
             // Redirect to login screen
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginScreen = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-            appDelegate.window.rootViewController = loginScreen;
+            sceneDelegate.window.rootViewController = loginScreen;
         }
     }];
 }
