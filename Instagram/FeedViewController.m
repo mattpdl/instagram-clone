@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.user = [PFUser currentUser];
+    self.user = PFUser.currentUser;
     NSLog(@"%@ logged in ", self.user.username);
 }
 

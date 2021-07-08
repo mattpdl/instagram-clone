@@ -78,7 +78,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Num-On-isJ">
             <objects>
-                <navigationController id="qcT-Kk-A2B" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FeedViewController" id="qcT-Kk-A2B" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ssd-uE-zsf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
