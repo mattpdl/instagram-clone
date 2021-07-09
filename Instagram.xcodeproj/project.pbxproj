@@ -151,9 +151,9 @@
 		FD2998D32694E7C10037EF12 = {
 			isa = PBXGroup;
 			children = (
+				FD2999162694E82D0037EF12 /* .gitattributes */,
 				FD2999142694E7F90037EF12 /* .gitignore */,
 				FD2999182694E84D0037EF12 /* README.md */,
-				FD2999162694E82D0037EF12 /* .gitattributes */,
 				FD2998DE2694E7C10037EF12 /* Instagram */,
 				FD2998FA2694E7C20037EF12 /* InstagramTests */,
 				FD2999052694E7C20037EF12 /* InstagramUITests */,

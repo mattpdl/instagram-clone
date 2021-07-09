@@ -6,6 +6,7 @@ target 'Instagram' do
   use_frameworks!
 
   # Pods for Instagram
+  pod 'DateTools'
   pod 'Parse'
   pod 'Parse/UI'
 

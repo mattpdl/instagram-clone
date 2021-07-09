@@ -6,6 +6,7 @@
 //
 
 #import "PostCell.h"
+#import "DateTools.h"
 
 @implementation PostCell
 
@@ -21,13 +22,14 @@
 }
 
 - (void)setPost:(Post *)post {
-    // Set username and caption labels
-    self.usernameLabel.text = post.author.username;
-    self.captionLabel.text = post.caption;
-    
     // Display post image
     self.postImageView.file = post[@"image"];
     [self.postImageView loadInBackground];
+    
+    // Set username, caption, and date labels
+    self.usernameLabel.text = post.author.username;
+    self.captionLabel.text = post.caption;
+    self.timestampLabel.text = post.createdAt.timeAgoSinceNow;
 }
 
 @end
