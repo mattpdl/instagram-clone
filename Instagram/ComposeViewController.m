@@ -64,6 +64,15 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    // Show placeholder text when no caption has been entered
+    if ([self.captionTextView hasText]) {
+        [self.placeholderLabel setHidden:YES];
+    } else {
+        [self.placeholderLabel setHidden:NO];
+    }
+}
+
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -86,8 +95,9 @@
     UIImage *userImage = editedImage ? editedImage : originalImage;
     
     // Resize selected image
-    CGFloat height = MIN(userImage.size.height, 2500);
-    CGFloat width = MIN(userImage.size.width, 2500);
+    NSLog(@"%.0f H x %.0f W", userImage.size.height, userImage.size.width);
+    CGFloat height = MIN(userImage.size.height, 2160);
+    CGFloat width = MIN(userImage.size.width, 2160);
     self.userImage = [self resizeImage:userImage withSize:CGSizeMake(width, height)];
     [Post getPFFileFromImage:userImage];
     
@@ -96,15 +106,6 @@
         // Set image preview in compose view controller
         [self.postImageView setImage:self.userImage];
     }];
-}
-
-- (void)textViewDidChange:(UITextView *)textView {
-    // Show placeholder text when no caption has been entered
-    if ([self.captionTextView hasText]) {
-        [self.placeholderLabel setHidden:YES];
-    } else {
-        [self.placeholderLabel setHidden:NO];
-    }
 }
 
 - (void)displayAlert:(NSString *)title withMessage:(NSString *)msg{
