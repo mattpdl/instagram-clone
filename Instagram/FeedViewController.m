@@ -27,6 +27,11 @@
     
     self.user = PFUser.currentUser;
     [self fetchPosts];
+    
+    // Add refresh control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -47,24 +52,33 @@
 }
 
 - (void)fetchPosts {
-    // construct PFQuery
+    // Construct PFQuery for posts
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
 
-    // fetch data asynchronously
+    // Fetch posts asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            // do something with the data fetched
+            // Store posts array and reload table view
             NSLog(@"Fetched posts for %@", self.user.username);
             self.posts = posts;
+            [self.tableView reloadData];
         }
         else {
-            // handle error
+            // Print error
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
+}
+
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    // Fetch new posts and reload table view
+    [self fetchPosts];
+
+    // Tell the refreshControl to stop spinning
+    [refreshControl endRefreshing];
 }
 
 /*
@@ -85,7 +99,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return MIN(self.posts.count, 20);
 }
 
 @end
