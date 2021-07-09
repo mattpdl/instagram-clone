@@ -8,9 +8,12 @@
 #import "FeedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "Post.h"
 #import "SceneDelegate.h"
 
 @interface FeedViewController ()
+
+@property (strong, nonatomic) NSArray<Post *> *posts;
 
 @end
 
@@ -20,7 +23,7 @@
     [super viewDidLoad];
     
     self.user = PFUser.currentUser;
-    NSLog(@"%@ logged in ", self.user.username);
+    [self fetchPosts];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -36,6 +39,27 @@
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginScreen = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             sceneDelegate.window.rootViewController = loginScreen;
+        }
+    }];
+}
+
+- (void)fetchPosts {
+    // construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            NSLog(@"Fetched posts for %@", self.user.username);
+            self.posts = posts;
+        }
+        else {
+            // handle error
+            NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
 }
