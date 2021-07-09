@@ -8,7 +8,7 @@
 #import "FeedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "Post.h"
+#import "PostCell.h"
 #import "SceneDelegate.h"
 
 @interface FeedViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -78,7 +78,10 @@
 */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return nil; // TODO: dequeue table cell and return
+    // Dequeue PostCell and set post labels and image
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    [cell setPost:self.posts[indexPath.row]];
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
