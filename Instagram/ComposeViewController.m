@@ -95,11 +95,9 @@
     UIImage *userImage = editedImage ? editedImage : originalImage;
     
     // Resize selected image
-    //NSLog(@"%.0f H x %.0f W", userImage.size.height, userImage.size.width); // print dimensions
     CGFloat height = MIN(userImage.size.height, 2160);
     CGFloat width = MIN(userImage.size.width, 2160);
     self.userImage = [self resizeImage:userImage withSize:CGSizeMake(width, height)];
-    [Post getPFFileFromImage:userImage]; // print image size
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:^{

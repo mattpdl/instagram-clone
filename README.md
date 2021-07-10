@@ -1,8 +1,8 @@
-# Project 4 - *Instagram*
+# Project 4 - *Instagram Clone*
 
-**Name TBD** is a photo sharing app using Parse as its backend.
+This basic **Instagram** clone is a photo sharing app using Parse as its backend.
 
-Time spent: **TBD** hours spent in total
+Time spent: **16** hours spent in total
 
 ## User Stories
 
@@ -14,13 +14,13 @@ The following **required** functionality is completed:
 - [x] User can take a photo, add a caption, and post it to "Instagram"
 - [x] User can view the last 20 posts submitted to "Instagram"
 - [x] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can tap a post to view post details, including timestamp and caption.
+- [x] User can tap a post to view post details, including timestamp and caption.
 
 The following **optional** features are implemented:
 
 - [ ] Run your app on your phone and use the camera to take the photo
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
-- [ ] Show the username and creation time for each post
+- [x] Show the username and creation time for each post
 - [ ] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
 - User Profiles:
   - [ ] Allow the logged in user to add a profile photo
@@ -39,8 +39,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. More about the Parse iOS SDK's built-in objects and UI components
+2. Best practices for structuring reusable UI code in Objective-C
 
 ## Video Walkthrough
 
@@ -55,11 +55,19 @@ GIF created with [EZGIF.COM](https://ezgif.com/video-to-gif).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [CodePath Instagram Assets for iOS](https://courses.codepath.org/course_files/ios_university_fast_track/assets/instagram_assets.zip) - app icon and image assets
+- [DateTools](https://github.com/MatthewYork/DateTools) - date and time handling library
+- [Parse](https://github.com/parse-community/Parse-SDK-iOS-OSX) - relational database backend library
+- [ParseUI](https://cocoapods.org/pods/ParseUI) - user interface components used with Parse
 
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+*Describe any challenges encountered while building the app.*
+
+When implementing login and signup, I ran into some issues with a error checking method I made, setUserCredentials. The method checks for an empty username or password before setting the user object's properties, and displays an alert about this in lieu of attempting login or signup . However, the method was mysteriously crashing the app without displaying an alert.
+
+I discovered that my return statements in setUserCredentials caused the username and password properties to be blank, but then be passed to Parse to attempt login or signup. In the end, I modified the method's return type from void to BOOL, added booleans to my return statements, and finally changed my login and signup methods to use the boolean value to determine whether the entered credentials are sufficient to attempt login or signup.
 
 ## License
 
