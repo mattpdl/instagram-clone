@@ -8,6 +8,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "Post.h"
+@import Shimmer;
 
 @interface ComposeViewController ()
 
@@ -34,8 +35,23 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
+    // Add shimmering view to user image
+    FBShimmeringView *imageShimmeringView = [[FBShimmeringView alloc] initWithFrame:self.postImageView.frame];
+    [self.view addSubview:imageShimmeringView];
+    imageShimmeringView.contentView = self.postImageView;
+    imageShimmeringView.shimmering = YES;
+    
+    // Add shimmering view to caption
+    FBShimmeringView *captionShimmeringView = [[FBShimmeringView alloc] initWithFrame:self.captionTextView.frame];
+    [self.view addSubview:captionShimmeringView];
+    captionShimmeringView.contentView = self.captionTextView;
+    captionShimmeringView.shimmering = YES;
+    
     // Create new post in the backend
     [Post postUserImage:self.userImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        imageShimmeringView.shimmering = NO;
+        captionShimmeringView.shimmering = NO;
+        
         if (succeeded) {
             NSLog(@"Posted image with caption: %@", self.captionTextView.text);
             [self dismissViewControllerAnimated:YES completion:nil];
