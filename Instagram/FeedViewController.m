@@ -13,6 +13,7 @@
 
 @interface FeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<Post *> *posts;
 
@@ -26,6 +27,7 @@
     self.tableView.delegate = self;
     
     self.user = PFUser.currentUser;
+    [self.activityIndicator startAnimating];
     [self fetchPosts];
     
     // Add refresh control
@@ -70,6 +72,8 @@
             // Print error
             NSLog(@"Error: %@", error.localizedDescription);
         }
+        
+        [self.activityIndicator stopAnimating];
     }];
 }
 
