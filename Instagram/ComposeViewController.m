@@ -57,7 +57,7 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"Error: %@", error.localizedDescription);
-            [self displayAlert:@"Post Submission Failed" withMessage:@"Please check your internet connection and try again later."];
+            [self displayAlert:@"Post Submission Failed" withMessage:@"Please check your internet connection and try again."];
         }
     }];
 }

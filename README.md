@@ -18,7 +18,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Run your app on your phone and use the camera to take the photo
+- [x] Run your app on your phone and use the camera to take the photo
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [x] Show the username and creation time for each post
 - [ ] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
@@ -35,7 +35,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Alerts for empty user credentials, failure to load posts, and failure to post images
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -46,7 +46,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-*GIF coming soon*
+![Signing up and logging in to Instagram in iOS simulator](ig-login-demo.gif)
+![Empty user credentials alerts on login screen in iOS simulator](ig-alert-demo.gif)
+![Instagram running in iOS simulator](ig-demo.gif)
 
 GIF created with [EZGIF.COM](https://ezgif.com/video-to-gif).
 

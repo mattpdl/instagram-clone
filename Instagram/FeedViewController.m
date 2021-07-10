@@ -69,8 +69,8 @@
             [self.tableView reloadData];
         }
         else {
-            // Print error
             NSLog(@"Error: %@", error.localizedDescription);
+            [self displayFetchFailureAlert];
         }
         
         [self.activityIndicator stopAnimating];
@@ -83,6 +83,27 @@
 
     // Tell the refreshControl to stop spinning
     [refreshControl endRefreshing];
+}
+
+- (void)displayFetchFailureAlert {
+    // Create a UIAlertController object
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failed to Load Feed"
+                               message:@"Please check your internet connection and try again."
+                               preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // Create a dismiss action
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:dismissAction];
+    
+    // Create a retry action
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.activityIndicator startAnimating];
+        [self fetchPosts];
+    }];
+    [alert addAction:retryAction];
+    
+    // Display alert
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*
